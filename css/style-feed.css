@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* =========================
+       CORES PRINCIPAIS
+    ========================= */
+
+    --yellow: #FCFF34;
+    --yellow-bright: #FAFF1A;
+    --yellow-dark: #F3F120;
+
+    /* DESTAQUES */
+    --red: #8D1425;
+    --red-bright: #D51B3A;
+    --acid-green: #C3D433;
+
+    /* FUNDOS */
+    --black: #010102;
+    --background: #110708;
+    --panel: #151110;
+    --panel-brown: #392215;
+
+    /* SECUNDÁRIAS */
+    --olive-dark: #4F521F;
+    --olive: #7E6A23;
+
+    /* TEXTOS */
+    --text: #F2F2E8;
+    --text-muted: #9F9A2E;
+    --gray: #858585;
+
+    /* BORDAS */
+    --border: #FCFF34;
+    --border-dark: #7E6A23;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    min-height: 100vh;
+    background-color: var(--background);
+    color: var(--text);
+    display: grid;
+    grid-template-columns: 180px minmax(0, 760px) 210px;
+    grid-template-rows: auto 1fr auto;
+    gap: 16px;
+    grid-template-areas:
+        "header header header"
+        "nav main aside"
+        "footer footer footer";
+}
+
+
+/* =========================
+   ÁREAS
+========================= */
+
+header {
+    grid-area: header;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border-dark);
+    background-color: var(--black);
+}
+
+
+nav {
+    grid-area: nav;
+    padding: 15px 10px;
+    background-color: var(--black);
+    border-right: 1px solid var(--border-dark);
+}
+
+
+main {
+    grid-area: main;
+    width: 100%;
+    min-width: 0;
+    padding: 20px 0;
+}
+
+
+aside {
+    grid-area: aside;
+    padding: 20px 10px;
+    background-color: var(--black);
+    border-left: 1px solid var(--border-dark);
+}
+
+
+footer {
+    grid-area: footer;
+    padding: 20px;
+    border-top: 1px solid var(--border-dark);
+    background-color: var(--black);
+    color: var(--text-muted);
+    text-align: center;
+}
+
+
+/* =========================
+   TEXTOS
+========================= */
+
+h1 {
+    color: var(--yellow);
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: var(--yellow);
+    margin-bottom: 10px;
+}
+
+h3 {
+    color: var(--yellow);
+    margin-top: 20px;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+
+nav ul {
+    list-style: none;
+}
+
+
+nav li {
+    margin-bottom: 5px;
+}
+
+
+nav a {
+    display: flex;
+    align-items: center;
+    min-height: 45px;
+    padding: 0 14px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    border-left: 3px solid transparent;
+    transition:
+        background-color 0.2s,
+        color 0.2s,
+        border-color 0.2s;
+}
+
+
+nav a:hover {
+    background-color: var(--yellow);
+    color: var(--black);
+    border-left-color: var(--red-bright);
+}
+
+
+/* =========================
+   POSTS
+========================= */
+
+main article {
+    background-color: var(--panel);
+    border: 1px solid var(--border-dark);
+    padding: 16px;
+    margin-bottom: 16px;
+    transition:
+        border-color 0.2s,
+        transform 0.2s;
+}
+
+
+main article:hover {
+    border-color: var(--yellow);
+    transform: translateY(-2px);
+}
+
+
+main article h2 {
+    font-size: 20px;
+}
+
+
+main article p {
+    color: var(--text);
+    line-height: 1.5;
+}
+
+
+/* =========================
+   ASIDE
+========================= */
+
+aside h2,
+aside h3 {
+    font-size: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: var(--black);
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: var(--olive);
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--yellow);
+}
+
+
+/* =========================
+   SELEÇÃO DE TEXTO
+========================= */
+
+::selection {
+    background-color: var(--yellow);
+
+    color: var(--black);
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 1000px) {
+
+    body {
+        grid-template-columns:
+            160px minmax(0, 1fr) 190px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    body {
+        grid-template-columns:
+            70px minmax(0, 1fr);
+
+        grid-template-areas:
+            "header header"
+            "nav main"
+            "footer footer";
+    }
+
+    aside {
+        display: none;
+    }
+
+    nav a {
+        justify-content: center;
+
+        padding: 0;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+        display: block;
+    }
+
+    header {
+        height: 60px;
+    }
+
+    nav {
+        border-right: none;
+        border-bottom: 1px solid var(--border-dark);
+    }
+
+    nav ul {
+        display: flex;
+
+        overflow-x: auto;
+    }
+
+    nav li {
+        flex-shrink: 0;
+
+        margin: 0;
+    }
+
+    nav a {
+        padding: 0 15px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    footer {
+        margin-top: 10px;
+    }
+}
