@@ -1,9 +1,20 @@
-const textoPost= document.querySelector("main article p")
+const textoPost = document.querySelector("main article p");
 textoPost.textContent = "um texto seu aqui";
-console.log(textoPost)
 
-const botaolike=document.querySelector("#curtir")
 
-botaolike.addEventListener("click", ()=>{
-    console.log("Like LIKe")
-})
+const botaolike = document.querySelector("#curtir");
+
+
+const contadoRcurti = document.querySelector("#contador-curtidas");
+
+botaolike.addEventListener("click", () => {
+    post.curtidas = post.curtidas + 1;
+    contadoRcurti.textContent = post.curtidas;
+});
+
+const post = {
+autor:"LOREM323",
+texto:"WHATT??BUGS",
+curtidas:0
+
+}
