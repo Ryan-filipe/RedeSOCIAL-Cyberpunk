@@ -1,5 +1,7 @@
 //const botaolike = document.querySelector("#curtir");
 
+const { jsx } = require("react/jsx-runtime");
+
 //const contadoRcurti = document.querySelector("#contador-curtidas");
 
 //botaolike.addEventListener("click", () => {
@@ -7,7 +9,7 @@
    // contadoRcurti.textContent = posts[0].curtidas;
 //});
 
-const posts = [
+let posts = [
 {
 autor:"LOREM323",
 texto:"WHATT??BUGS",
@@ -42,11 +44,31 @@ const botoes = document.querySelectorAll(".btn-curtir");
 botoes.forEach((botao, posicao)=>{
     botao.addEventListener("click",()=>{
     posts[posicao].curtidas = posts[posicao].curtidas + 1;
+    localStorage.setItem("posts", JSON.stringify(posts));
     renderizaFeed();
     })
 })
 }
+const salvos = localStorage.getItem("posts");
+
+if (salvos) {
+    posts= JSON.parse(salvos);
+}
 renderizaFeed();
 
+const novoTexto= document.querySelector("#novo-texto");
+const botaoPostar= document.querySelector("#postar");
+
+botaoPostar.addEventListener("click",()=>{
+  const novoPost = {
+    autor: "RyanFilipe",
+    texto: novoTexto.value,
+    curtidas: 0
+  };
+
+  posts.push(novoPost);
+  localStorage.setItem("posts", JSON.stringify(posts));
+  renderizaFeed()
+})
 
 
