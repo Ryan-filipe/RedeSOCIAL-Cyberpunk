@@ -105,8 +105,29 @@ footer {
     color: var(--text-muted);
     text-align: center;
 }
+/* =========================
+   BOTOES
+========================= */
 
+button {
+    background-color: var(--yellow);
+    color: var(--black);
+    border: none;
+    padding:  8px 16px;
+    cursor: pointer;
+}
 
+button:hover {
+    background-color: var(--yellow-bright);
+}
+textarea {
+    width: 100%;
+    background-color: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--border-dark);
+    padding: 12px;
+    resize: none;
+}
 /* =========================
    TEXTOS
 ========================= */
@@ -127,6 +148,21 @@ h3 {
     margin-top: 20px;
 }
 
+.sugestao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-seguir {
+    width: 90px;
+}
 
 /* =========================
    LINKS
